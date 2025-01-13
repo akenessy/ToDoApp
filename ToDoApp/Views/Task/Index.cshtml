@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ToDoApp.Models.Task>
+
+<div class="container mt-6">
+    <h1 class="text-center">Список задач</h1>
+
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-md-3">
+            <label for="search" class="form-label">Поиск по названию задачи</label>
+            <input type="text" name="search" class="form-control" value="@ViewData["Search"]" />
+        </div>
+        <div class="col-md-3">
+            <label for="startDate" class="form-label">Начальная дата</label>
+            <input type="date" name="startDate" class="form-control" value="@ViewData["StartDate"]" />
+        </div>
+        <div class="col-md-3">
+            <label for="endDate" class="form-label">Конечная дата</label>
+            <input type="date" name="endDate" class="form-control" value="@ViewData["EndDate"]" />
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">Фильтровать</button>
+        </div>
+        <div class="col-md-1 d-flex align-items-end">
+            <a href="@Url.Action("Index")" class="btn btn-secondary w-100">Сброс</a>
+        </div>
+    </form>
+
+    <a href="@Url.Action("Create")" class="btn btn-success mb-3">Добавить задачу</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width: 40%">Название задачи</th>
+                <th style="width: 20%">Статус</th>
+                <th style="width: 20%">Создана</th>
+                <th style="width: 20%">Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="4" class="text-center">Нет задач</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var task in Model)
+                {
+                    <tr>
+                        <td class="text-truncate" style="max-width: 300px;">@task.Title</td>
+                        <td>@(task.IsCompleted ? "Выполнена" : "В ожидании")</td>
+                        <td>@task.CreatedAt.ToString("dd.MM.yyyy")</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = task.ID })" class="btn btn-warning btn-sm">Изменить</a>
+                            <form method="post" asp-action="Delete" asp-route-id="@task.ID" class="d-inline">
+                                <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
