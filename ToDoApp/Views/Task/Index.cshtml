@@ -47,8 +47,10 @@
                 @foreach (var task in Model)
                 {
                     <tr>
-                        <td class="text-truncate" style="max-width: 300px;">@task.Title</td>
-                        <td>@(task.IsCompleted ? "Выполнена" : "В ожидании")</td>
+                       <td class="text-truncate" style="max-width: 300px;">@task.Title</td>
+                       <td class="@((task.IsCompleted ? "text-success" : "text-danger"))">
+                            @(task.IsCompleted ? "Выполнена" : "В процессе")
+                        </td>
                         <td>@task.CreatedAt.ToString("dd.MM.yyyy")</td>
                         <td>
                             <a href="@Url.Action("Edit", new { id = task.ID })" class="btn btn-warning btn-sm">Изменить</a>
