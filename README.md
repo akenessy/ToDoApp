@@ -240,15 +240,6 @@ Run the following commands in the terminal:
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is distributed under the terms of the GNU Affero General Public License (AGPL).
 
 ---
-
-## Contributing
-
-We welcome contributions! Feel free to open a pull request or create an issue.
-
----
-
-Happy coding! 🎉
-
