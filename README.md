@@ -99,6 +99,11 @@ dotnet dev-certs https --trust
    ```bash
    dotnet run
    ```
+4. В браузере перейдите по ссылке, которую выдала консоль:
+   ```bash
+   info : Microsoft.Hosting.Lifetime[14]
+          Now listening on: http://localhost:5205
+   ```
 
 ---
 
@@ -218,7 +223,11 @@ Run the following commands in the terminal:
    ```bash
    dotnet run
    ```
-
+4. In the browser, click on the link provided by the console:
+   ```bash
+   info : Microsoft.Hosting.Lifetime[14]
+          Now listening on: http://localhost:5205
+   ```
 ---
 
 ## Features
